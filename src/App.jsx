@@ -2,6 +2,7 @@ import "./styles.css"
 import {useState, useEffect} from 'react'
 import { NewTodoForm } from "./NewTodoForm"
 import { TodoList } from "./TodoList"
+import { v4 as uuidv4 } from 'uuid'
 
 export default function App(){
   const[todos, setTodos] = useState(() => {
@@ -12,14 +13,16 @@ export default function App(){
   })
 
   useEffect(() => {
-    localStorage.setItem("ITEMS", JSON.stringify(todos))
-  }, [todos])
+    const storageKey = "Todo_List_Data"; 
+    localStorage.setItem(storageKey, JSON.stringify(todos));
+  }, [todos]);
+  
 
 function addTodo(title){
   setTodos((currentTodos) => {
           return [
             ...currentTodos,
-            {id: crypto.randomUUID(), title, completed: false}
+            {id: uuidv4(), title, completed: false}
           ]
         })
 }
