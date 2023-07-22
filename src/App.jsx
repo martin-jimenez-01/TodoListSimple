@@ -49,7 +49,7 @@ function addTodo(title){
   return (
   <>
     <NewTodoForm onSubmit={addTodo} />
-    <h1 className="Header">Todo List</h1>
+    <h1 className="Header">To-Do List</h1>
     <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
   </>
   )
